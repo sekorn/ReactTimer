@@ -15,6 +15,10 @@ var Timer = React.createClass({
       this.setState({count: newCount});
     }, 1000);
   },
+  componentWillUnmount: function() {
+    clearInterval(this.timer);
+    this.timer = undefined;
+  },
   componentDidUpdate: function(prevProps, prevState) {
     if (this.state.countdownStatus != prevState.countdownStatus) {
       switch (this.state.countdownStatus) {
